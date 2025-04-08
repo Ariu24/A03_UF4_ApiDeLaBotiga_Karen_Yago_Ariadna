@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  
 import com.iticbcn.mywebapp.llibresApp.DTO.LlibreDTO;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductService;
- 
+ /*
 @RestController
 @RequestMapping("/api/llibreria")
 public class RESTBookController {
@@ -65,4 +65,5 @@ public class RESTBookController {
     }
  
 }
+    */
  
