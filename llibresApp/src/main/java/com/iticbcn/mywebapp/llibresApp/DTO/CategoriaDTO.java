@@ -1,6 +1,5 @@
 package com.iticbcn.mywebapp.llibresApp.DTO;
 
-import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +15,5 @@ public class CategoriaDTO {
     private String status_Categoria;
 
     private Subcategoria subcategoria;
-
-    private Product product;
 }
 

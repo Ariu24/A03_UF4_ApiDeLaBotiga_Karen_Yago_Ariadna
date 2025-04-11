@@ -57,6 +57,15 @@ public class CategoriaServiceImpl implements BotigaService {
         categoriaRepository.deleteById(id);
     }
 
+    public List<CategoriaDTO> findByStatus(String status){
+        List<Categoria> categorias = categoriaRepository.findByStatus(status);
+        List<CategoriaDTO> categoriaDTOs = new ArrayList<>();
+        for(Categoria c : categorias){
+            categoriaDTOs.add(categoriaMapper.CategoriaToCategoriaDTO(c));
+        }
+        return categoriaDTOs;
+    }
+
     @Override
     public List<ProductDTO> findAllProducts() {
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");

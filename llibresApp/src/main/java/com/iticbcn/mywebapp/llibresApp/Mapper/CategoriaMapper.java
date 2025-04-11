@@ -1,6 +1,6 @@
 package com.iticbcn.mywebapp.llibresApp.Mapper;
 
-import java.util.Set;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -14,6 +14,6 @@ public interface CategoriaMapper {
  
     Categoria CategoriaDTOtoCategoria(CategoriaDTO categoriaDTO);
  
-    Set<Categoria> CategoriasDTOToCategorias(Set<CategoriaDTO> llibresDTO);
-    Set<CategoriaDTO> CategoriasToCategoriasDTO(Set<Categoria> llibres);     
+    List<Categoria> CategoriasDTOToCategorias(List<CategoriaDTO> llibresDTO);
+    List<CategoriaDTO> CategoriasToCategoriasDTO(List<Categoria> llibres);     
 }
