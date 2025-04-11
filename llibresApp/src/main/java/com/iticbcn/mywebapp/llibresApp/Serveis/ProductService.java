@@ -6,7 +6,7 @@ import java.util.Set;
 import com.iticbcn.mywebapp.llibresApp.DTO.LlibreDTO;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 
-public interface BotigaService {
+public interface ProductService {
   
     Set<Product> findAllProducts();
     Product findProductsByName(String name);
