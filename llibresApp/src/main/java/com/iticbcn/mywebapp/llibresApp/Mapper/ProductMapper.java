@@ -15,6 +15,6 @@ public interface ProductMapper {
  
     Product ProductDTOtoProduct(ProductDTO productDTO);
  
-    Set<Product> LlibresDTOToLlibres(Set<ProductDTO> llibresDTO);
-    Set<ProductDTO> LlibresToLlibresDTO(Set<Product> llibres);     
+    Set<Product> ProductDTOstoProducts(Set<ProductDTO> llibresDTO);
+    Set<ProductDTO> ProductsTOProductsDTOs(Set<Product> llibres);     
 }
