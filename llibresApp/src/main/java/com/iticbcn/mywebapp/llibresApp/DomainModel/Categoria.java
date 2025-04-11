@@ -28,7 +28,7 @@ public class Categoria {
     private Timestamp creation_at;
     @Column(nullable = false)
     private Timestamp updated_at ;
-    // @Column(nullable = false)
-    // private Subcategoria subcategoria;
+    @Column(nullable = false)
+    private Subcategoria subcategoria;
 }
 
