@@ -10,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Repository
@@ -17,7 +18,8 @@ public interface ProductRepository extends JpaRepository<Object, Long> {
     @Override
     @NonNull
     List<Object> findAll();
-    Object findProductsByName(String name);
-    List<Object> findAllProducts();
+    Optional<Object> findByID(Long id);
+    Object save(Object obj);
+    void deleteById(Long id);
 }
 

@@ -1,8 +1,9 @@
 package com.iticbcn.mywebapp.llibresApp.DTO;
 
-import java.time.LocalDate;
 
-import jakarta.persistence.Column;
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,6 @@ public class ProductDTO {
     private String company;
     private float price;
     private long units;
-    //private Category category;
+    private Categoria categoria;
+    private Subcategoria subcategoria;
 }
