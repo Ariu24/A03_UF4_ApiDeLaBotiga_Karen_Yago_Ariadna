@@ -14,8 +14,8 @@ public interface SubcategoriaMapper {
     SubcategoriaDTO SubcategoriaToSubcategoriaDTO(Subcategoria subcategoria);
     Subcategoria SubcategoriaDTOToSubcategoria(SubcategoriaDTO SubcategoriaDTO);
 
-    Set<Subcategoria> SubcategoriaDTOToSubcategorias(Set<SubcategoriaDTO> SubcategoriaDTO);
-    Set<SubcategoriaDTO> SubcategoriaToSubcategoriaDTO(Set<Subcategoria> categorias);
+    Set<Subcategoria> SubcategoriaDTOToSubcategorias(Set<SubcategoriaDTO> llibresDTO);
+    Set<SubcategoriaDTO> SubcategoriaToSubcategoriaDTO(Set<Subcategoria> llibres);
    
 
     
