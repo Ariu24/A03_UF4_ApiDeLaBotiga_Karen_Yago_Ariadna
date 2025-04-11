@@ -11,15 +11,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria {
+public class CategoriaDTO {
 
     private String desc_Categoria;
 
     private String status_Categoria;
-
-    private Timestamp creation_at;
-
-    private Timestamp updated_at ;
 
     private Subcategoria subcategoria;
 
