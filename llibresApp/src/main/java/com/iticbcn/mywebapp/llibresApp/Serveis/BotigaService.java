@@ -3,16 +3,19 @@ package com.iticbcn.mywebapp.llibresApp.Serveis;
 import java.util.List;
 import java.util.Optional;
 
-public interface BotigaService {
- 
-    List<Object> findAll();
-    Optional<Object> findByID(Long id);
-    Object save(Object obj);
-    void deleteById(Long id);
+import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
+import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
 
-    /*  List<T> findAll();
-    Optional<T> findById(ID id);
-    T save(T entity);
-    void deleteById(ID id); */
-   
+public interface BotigaService {
+    List<CategoriaDTO> findAllCategorias();
+    Optional<CategoriaDTO> findCategoriaById(Long id);
+    CategoriaDTO saveCategoria(CategoriaDTO entity);
+    void deleteCategoriaById(Long id); 
+
+    List<ProductDTO> findAllProducts();
+    Optional<ProductDTO> findProductById(Long id);
+    ProductDTO saveProduct(ProductDTO entity);
+    void deleteProductById(Long id); 
+
+    //TODO: Subcategoria
 }
