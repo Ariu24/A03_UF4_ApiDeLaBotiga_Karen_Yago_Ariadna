@@ -1,12 +1,15 @@
 package com.iticbcn.mywebapp.llibresApp.DomainModel;
-import java.io.Serializable;
+
 import java.security.Timestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
+
 /*
  * id_Subategoria (Long).
 desc_Subategoria (String).
@@ -19,10 +22,11 @@ updated_at (timestamp).
 
 @NoArgsConstructor
 @Entity
-public class Subcategoria implements Serializable {
+@Table(name="subcategoria")
+public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_Subategoria;
+    private Long id_Subategoria;
     @Column
     private String desc_Subcategoria;
     @Column
