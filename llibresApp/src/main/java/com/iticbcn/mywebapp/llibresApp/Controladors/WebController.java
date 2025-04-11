@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductService;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -25,7 +26,7 @@ public class WebController {
  
     @RequestMapping(value = "/catalog")
     public String catalog(Model model) {
-        Set<Product> products = productService.findAllProducts();
+        List<Product> products = productService.findAllProducts();
         model.addAttribute("products", products);
         return "catalog";
     }

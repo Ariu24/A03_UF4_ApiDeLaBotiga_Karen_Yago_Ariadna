@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LlibreDTO {
+    private Long idLlibre;
     private String titol;
     private String autor;
     private String editorial;
