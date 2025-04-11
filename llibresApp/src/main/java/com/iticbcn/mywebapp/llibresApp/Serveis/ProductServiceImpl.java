@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.ProductRepository;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -15,12 +16,12 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public Set<Product> findAllProducts() {
+    public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
 
     @Override
-    public Set<Product> findAllProducts(String subcategory) {
+    public List<Product> findAllProducts(String subcategory) {
         return null;
     }
 
@@ -31,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void increasePrice(Product product) {
+        product.setPrice(product.getPrice()+10);
 
     }
 }
