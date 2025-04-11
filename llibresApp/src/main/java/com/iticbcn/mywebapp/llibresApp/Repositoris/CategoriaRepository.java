@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Object, Long> {
-    List<Categoria> findByStatus();
+    List<Categoria> findByStatus(String status);
 }

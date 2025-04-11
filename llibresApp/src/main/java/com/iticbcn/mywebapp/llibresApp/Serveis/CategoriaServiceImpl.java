@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.CategoriaRepository;
 
 public class CategoriaServiceImpl implements BotigaService {
@@ -34,6 +35,10 @@ public class CategoriaServiceImpl implements BotigaService {
     @Override
     public void deleteById(Long id) {
         categoriaRepository.delete(id);
+    }
+
+    public List<Categoria> findByStatus(String status){
+        return categoriaRepository.findByStatus(status);
     }
     
 }
