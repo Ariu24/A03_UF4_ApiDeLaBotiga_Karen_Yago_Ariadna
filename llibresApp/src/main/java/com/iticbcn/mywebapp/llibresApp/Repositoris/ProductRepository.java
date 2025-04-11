@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Object, Long> {
     @Override
     @NonNull
-    List<Product> findAll();
-    Product findByName(String name);
-    Set<Product> findByNameAndPrice(String name, float price);
+    List<Object> findAll();
+    Object findProductsByName(String name);
+    List<Object> findAllProducts();
 }
 

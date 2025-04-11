@@ -30,9 +30,12 @@ public class Product implements Serializable{
     private LocalDateTime creationDate;
     @Column(name = "updated_at")
     private LocalDateTime updateDate;
-/*
-    @OneToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="category_id")
-    private Category category;    */ 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_Categoria")
+    private Categoria categoria;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "subcategoria_id")
+    private Subcategoria subcategoria;
 
 }

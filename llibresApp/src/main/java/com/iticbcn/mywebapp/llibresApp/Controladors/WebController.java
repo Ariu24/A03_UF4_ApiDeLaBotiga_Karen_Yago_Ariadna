@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
+import com.iticbcn.mywebapp.llibresApp.Serveis.BotigaService;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductService;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Set;
 public class WebController {
  
     @Autowired
-    private ProductService productService;
+    private BotigaService productService;
  
     @RequestMapping(value = "/")
     public String index(Model model) {
