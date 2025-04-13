@@ -9,9 +9,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface SubcategoriaRepository extends JpaRepository<Object,Long> {
-    
-   // List<Subcategoria>
+public interface SubcategoriaRepository extends JpaRepository<Subcategoria,Long> {
+    List<Subcategoria> findByTextIgnoreCase(String text);
 
-    
 } 
