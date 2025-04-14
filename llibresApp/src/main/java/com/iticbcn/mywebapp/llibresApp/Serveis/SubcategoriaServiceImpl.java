@@ -16,7 +16,7 @@ import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
 
 @Service
-public class SubcategoriaImpl implements BotigaService {
+public class SubcategoriaServiceImpl implements BotigaService {
     
     private SubcategoriaRepository subcategoriaRepository;
 
@@ -39,7 +39,7 @@ public class SubcategoriaImpl implements BotigaService {
     }
 
     @Override
-    public Optional<SubcategoriaDTO> findSubcategoriaById(Long id){
+    public Optional<SubcategoriaDTO> findSubCategoriaById(Long id){
         Optional<Subcategoria> c = subcategoriaRepository.findById(id);
         if (c.isPresent()){
             return Optional.of(subcategoriaMapper.SubcategoriaToSubcategoriaDTO(c.get()));
@@ -48,7 +48,7 @@ public class SubcategoriaImpl implements BotigaService {
     }
 
     @Override
-    public SubcategoriaDTO saveSubcategoria(SubcategoriaDTO subcategoriaDTO){
+    public SubcategoriaDTO savedSubcategoria(SubcategoriaDTO subcategoriaDTO){
         Subcategoria subcategoria = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoriaDTO);
         Subcategoria savedSubcategoria = subcategoriaRepository.save(subcategoria);
         return subcategoriaMapper.SubcategoriaToSubcategoriaDTO(savedSubcategoria);
@@ -60,8 +60,26 @@ public class SubcategoriaImpl implements BotigaService {
         subcategoriaRepository.deleteById(id);
     }
 
-    public List<SubcategoriaDTO> findByTextIgnoreCase(String text){
+    /*public List<SubcategoriaDTO> findByTextIgnoreCase(String text){
         
+    }*/
+    @Override
+    public List<ProductDTO> findAllProducts(){
+        throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
+    }
+    @Override
+    public Optional<ProductDTO> findProductById(Long id){
+        throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
+    }
+    @Override
+    public ProductDTO saveProduct(ProductDTO entity){
+        throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
+    
+    }
+
+    @Override
+    public void deleteProductById(Long id){
+        throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
     }
     
 
