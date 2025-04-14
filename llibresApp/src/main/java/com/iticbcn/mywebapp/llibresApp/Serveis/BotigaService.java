@@ -21,6 +21,6 @@ public interface BotigaService {
     //TODO: Subcategoria
     List<SubcategoriaDTO> findAllSubcategorias();
     Optional<SubcategoriaDTO> findSubCategoriaById(Long id);
-    SubcategoriaDTO saveSubcategoria(SubcategoriaDTO entity);
+    SubcategoriaDTO savedSubcategoria(SubcategoriaDTO entity);
     void deleteSubcategoria(Long id);
 }

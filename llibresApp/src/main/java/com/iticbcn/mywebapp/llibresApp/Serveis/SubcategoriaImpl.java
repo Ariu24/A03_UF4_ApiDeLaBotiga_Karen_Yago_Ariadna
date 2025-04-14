@@ -49,15 +49,19 @@ public class SubcategoriaImpl implements BotigaService {
 
     @Override
     public SubcategoriaDTO saveSubcategoria(SubcategoriaDTO subcategoriaDTO){
-        Subcategoria subcategoria = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoriaDTO)
-        Subcategoria saveSubcategoria = subcategoriaRepository.save(subcategoria);
-        return subcategoriaMapper.SubcategoriaToSubcategoriaDTO(saveSubcategoria);
+        Subcategoria subcategoria = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoriaDTO);
+        Subcategoria savedSubcategoria = subcategoriaRepository.save(subcategoria);
+        return subcategoriaMapper.SubcategoriaToSubcategoriaDTO(savedSubcategoria);
 
     }
 
     @Override
     public void deleteSubcategoriaById(Long id){
         subcategoriaRepository.deleteById(id);
+    }
+
+    public List<SubcategoriaDTO> findByTextIgnoreCase(String text){
+        
     }
     
 
