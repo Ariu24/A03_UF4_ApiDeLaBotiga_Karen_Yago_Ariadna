@@ -56,13 +56,19 @@ public class SubcategoriaServiceImpl implements BotigaService {
     }
 
     @Override
-    public void deleteSubcategoriaById(Long id){
+    public void deleteSubcategoriaId(Long id){
         subcategoriaRepository.deleteById(id);
     }
 
-    /*public List<SubcategoriaDTO> findByTextIgnoreCase(String text){
-        
-    }*/
+    public List<SubcategoriaDTO> findByDescSubcategoria(String text) {
+        List<Subcategoria> subcategories = subcategoriaRepository.findByTextIgnoreCase(text);
+        List<SubcategoriaDTO> subcategoriaDTOs = new ArrayList<>();
+        for (Subcategoria s : subcategories) {
+            subcategoriaDTOs.add(subcategoriaMapper.SubcategoriaToSubcategoriaDTO(s));
+        }
+        return subcategoriaDTOs;
+    }
+    
     @Override
     public List<ProductDTO> findAllProducts(){
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
