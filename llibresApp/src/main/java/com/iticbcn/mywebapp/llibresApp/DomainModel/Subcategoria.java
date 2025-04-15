@@ -11,16 +11,6 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*
- * id_Subategoria (Long).
-desc_Subategoria (String).
-status_Subategoria (String).
-categoria.
-creation_at (timestamp).
-updated_at (timestamp).
-
- */
-
 @Data
 @NoArgsConstructor
 @Entity
