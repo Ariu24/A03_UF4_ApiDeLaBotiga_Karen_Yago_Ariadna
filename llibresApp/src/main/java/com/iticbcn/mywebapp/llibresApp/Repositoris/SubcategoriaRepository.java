@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface SubcategoriaRepository extends JpaRepository<Subcategoria,Long> {
-    List<Subcategoria> findByTextIgnoreCase(String text);
+    List<Subcategoria> findByCategoriaId(Long categoriaId);
 
 } 
