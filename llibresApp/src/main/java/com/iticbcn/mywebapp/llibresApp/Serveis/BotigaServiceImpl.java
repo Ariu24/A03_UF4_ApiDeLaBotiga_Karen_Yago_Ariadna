@@ -13,7 +13,7 @@ public class BotigaServiceImpl implements BotigaService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Object> findAll() {
+    public List<Product> findAll() {
         return productRepository.findAll();
     }
     @Override
@@ -21,8 +21,10 @@ public class BotigaServiceImpl implements BotigaService {
         return productRepository.findByID(id);
     }
     @Override
-    public Object save(Object obj) {
-        obj.save();
+    public Product save(Product obj) {
+        obj.persistObject();
+        return obj;
+        
     }
 
 
@@ -47,6 +49,11 @@ public class BotigaServiceImpl implements BotigaService {
     public void deleteById(Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+    }
+    @Override
+    public void save(Object obj) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
 }
