@@ -1,6 +1,6 @@
 package com.iticbcn.mywebapp.llibresApp.Mapper;
 
-import java.util.Set;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -12,10 +12,10 @@ import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 public interface SubcategoriaMapper {
     
     SubcategoriaDTO SubcategoriaToSubcategoriaDTO(Subcategoria subcategoria);
-    Subcategoria SubcategoriaDTOToSubcategoria(SubcategoriaDTO SubcategoriaDTO);
+    Subcategoria SubcategoriaDTOtoSubcategoria(SubcategoriaDTO SubcategoriaDTO);
 
-    Set<Subcategoria> SubcategoriaDTOToSubcategorias(Set<SubcategoriaDTO> llibresDTO);
-    Set<SubcategoriaDTO> SubcategoriaToSubcategoriaDTO(Set<Subcategoria> llibres);
+    List<Subcategoria> SubcategoriaDTOtoSubcategorias(List<SubcategoriaDTO> llibresDTO);
+    List<SubcategoriaDTO> SubcategoriaToSubcategoriaDTO(List<Subcategoria> llibres);
    
 
     
