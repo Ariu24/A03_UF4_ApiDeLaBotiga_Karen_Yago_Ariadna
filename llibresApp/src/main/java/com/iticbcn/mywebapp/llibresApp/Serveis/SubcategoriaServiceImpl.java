@@ -3,6 +3,7 @@ package com.iticbcn.mywebapp.llibresApp.Serveis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,7 @@ public class SubcategoriaServiceImpl implements BotigaService {
     public SubcategoriaDTO savedSubcategoria(SubcategoriaDTO subcategoriaDTO){
         Subcategoria subcategoria = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoriaDTO);
         Subcategoria savedSubcategoria = subcategoriaRepository.save(subcategoria);
+        savedSubcategoria.setCreation_at(LocalDateTime.now());
         return subcategoriaMapper.SubcategoriaToSubcategoriaDTO(savedSubcategoria);
 
     }

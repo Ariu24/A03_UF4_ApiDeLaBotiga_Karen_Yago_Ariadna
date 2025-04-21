@@ -1,6 +1,7 @@
 package com.iticbcn.mywebapp.llibresApp.DomainModel;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -28,9 +29,9 @@ public class Subcategoria {
     @Column
     private String status_Subcategoria;
     @Column
-    private Timestamp creation_at;
+    private LocalDateTime creation_at;
     @Column 
-    private Timestamp updated_at;
+    private LocalDateTime updated_at;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
