@@ -10,12 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Object, Long> {
-    @Override
-    @NonNull
-    List<Object> findAll();
-    Optional<Object> findByID(Long id);
-    Object save(Object obj);
-    void deleteById(Long id);
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    
+
 }
 

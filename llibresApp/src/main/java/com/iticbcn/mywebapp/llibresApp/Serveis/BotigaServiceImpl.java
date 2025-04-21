@@ -15,7 +15,7 @@ public class BotigaServiceImpl implements BotigaService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Object> findAll() {
+    public List<Product> findAll() {
         return productRepository.findAll();
     }
     @Override
@@ -23,8 +23,10 @@ public class BotigaServiceImpl implements BotigaService {
         return productRepository.findByID(id);
     }
     @Override
-    public Object save(Object obj) {
-        obj.save();
+    public Product save(Product obj) {
+        obj.persistObject();
+        return obj;
+        
     }
 
 
