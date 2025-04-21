@@ -1,4 +1,4 @@
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `id_categoria` bigint(20) NOT NULL AUTO_INCREMENT,
   `desc_categoria` varchar(255) DEFAULT NULL,
   `status_categoria` varchar(50) DEFAULT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id_categoria`)
 );
 
-CREATE TABLE `subcategories` (
+CREATE TABLE IF NOT EXISTS `subcategories` (
   `id_subcategoria` bigint(20) NOT NULL AUTO_INCREMENT,
   `desc_subcategoria` varchar(255) DEFAULT NULL,
   `status_subcategoria` varchar(50) DEFAULT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE `subcategories` (
   CONSTRAINT `fk_subcategoria_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categories` (`id_categoria`) ON DELETE CASCADE
 );
 
-CREATE TABLE `products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `product_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `company` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
