@@ -7,19 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-/*
- * id_Subategoria (Long).
-desc_Subategoria (String).
-status_Subategoria (String).
-categoria.
-creation_at (timestamp).
-updated_at (timestamp).
-
- */
 
 @Data
 @NoArgsConstructor
@@ -37,6 +30,15 @@ public class Subcategoria {
     private Timestamp creation_at;
     @Column 
     private Timestamp updated_at;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+    @OneToMany
+    @JoinColumn(name="product_id")
+    private Product product;
+
+
 
 
 }
