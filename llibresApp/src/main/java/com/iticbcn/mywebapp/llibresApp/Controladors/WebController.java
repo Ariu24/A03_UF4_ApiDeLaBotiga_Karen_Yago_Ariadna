@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.Serveis.BotigaService;
-import com.iticbcn.mywebapp.llibresApp.Serveis.ProductService;
 
 import java.util.List;
 import java.util.Set;
