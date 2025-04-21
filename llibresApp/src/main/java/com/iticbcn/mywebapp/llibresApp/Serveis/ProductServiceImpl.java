@@ -59,11 +59,11 @@ public class ProductServiceImpl implements BotigaService {
     public ProductDTO saveProduct(ProductDTO entity) {
         Categoria categoria = entity.getCategoria();
         Subcategoria subcategoryId = entity.getSubcategoria();
-        if (!categoriaServiceImpl.findCategoriaById(categoria.getId_Categoria()).isPresent()) {
-            throw new IllegalArgumentException("La categoria amb ID " + categoria.getId_Categoria() + " no existeix.");
+        if (!categoriaServiceImpl.findCategoriaById(categoria.getIdCategoria()).isPresent()) {
+            throw new IllegalArgumentException("La categoria amb ID " + categoria.getIdCategoria() + " no existeix.");
         }
-        if (!subcategoriaServiceImpl.findCategoriaById(subcategoryId.getId_Subategoria()).isPresent()) {
-            throw new IllegalArgumentException("La subcategoria amb ID " + subcategoryId.getId_Subategoria() + " no existeix.");
+        if (!subcategoriaServiceImpl.findCategoriaById(subcategoryId.getId_subcategoria()).isPresent()) {
+            throw new IllegalArgumentException("La subcategoria amb ID " + subcategoryId.getId_subcategoria() + " no existeix.");
         }
         Product producte = productMapper.ProductDTOtoProduct(entity);
         Product productGuardat = productRepository.save(producte);

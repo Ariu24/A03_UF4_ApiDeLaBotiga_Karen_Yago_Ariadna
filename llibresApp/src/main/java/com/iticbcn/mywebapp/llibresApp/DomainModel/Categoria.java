@@ -17,13 +17,13 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria") 
-    private Long idCategoria; 
+    private Long id; 
 
     @Column(name = "desc_categoria", nullable = false)
     private String descCategoria; 
 
-    @Column(name = "status_categoria", nullable = false)
-    private String statusCategoria; 
+    @Column(name = "status", nullable = false)
+    private String status; 
 
     @Column(name = "creation_at", nullable = false)
     private LocalDateTime creationAt; 
