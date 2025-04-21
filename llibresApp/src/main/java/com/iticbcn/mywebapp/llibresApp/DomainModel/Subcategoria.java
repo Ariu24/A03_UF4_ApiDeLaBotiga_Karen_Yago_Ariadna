@@ -1,6 +1,7 @@
 package com.iticbcn.mywebapp.llibresApp.DomainModel;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Subategoria;
+    private Long id_subcategoria;
     @Column
     private String desc_Subcategoria;
     @Column
@@ -32,12 +33,10 @@ public class Subcategoria {
     private Timestamp updated_at;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
-    @OneToMany
-    @JoinColumn(name="product_id")
-    private Product product;
-
+    @OneToMany(mappedBy = "subcategoria")
+    private List<Product> productes;
 
 
 
