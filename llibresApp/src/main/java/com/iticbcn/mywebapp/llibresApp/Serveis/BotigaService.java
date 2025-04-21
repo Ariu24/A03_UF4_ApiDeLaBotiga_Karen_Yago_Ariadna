@@ -8,11 +8,15 @@ import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 
 public interface BotigaService {
- 
-    List<Object> findAll();
-    Optional<Object> findByID(Long id);
-    Object save(Object obj);
-    void deleteById(Long id);
+    List<CategoriaDTO> findAllCategorias();
+    Optional<CategoriaDTO> findCategoriaById(Long id);
+    CategoriaDTO saveCategoria(CategoriaDTO entity);
+    void deleteCategoriaById(Long id); 
+
+    List<ProductDTO> findAllProducts();
+    Optional<ProductDTO> findProductById(Long id);
+    ProductDTO saveProduct(ProductDTO entity);
+    void deleteProductById(Long id); 
 
     //TODO: Subcategoria
     List<SubcategoriaDTO> findAllSubcategorias();
