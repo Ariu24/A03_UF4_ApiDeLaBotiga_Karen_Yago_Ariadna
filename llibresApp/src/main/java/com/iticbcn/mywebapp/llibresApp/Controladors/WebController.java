@@ -24,7 +24,7 @@ public class WebController {
         return "index";
     }
  
-    @RequestMapping(value = "/catalog")
+    /*@RequestMapping(value = "/catalog")
     public String catalog(Model model) {
         List<Product> products = productService.findAllProducts();
         model.addAttribute("products", products);
@@ -38,5 +38,5 @@ public class WebController {
             model.addAttribute("product", product);
         }
         return "search"; // Referencia a search.html en el directorio templates
-    }
+    }*/
 }
