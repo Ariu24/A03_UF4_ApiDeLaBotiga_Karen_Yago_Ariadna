@@ -10,7 +10,6 @@ import java.util.Optional;
 import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
-import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
@@ -87,7 +86,24 @@ public class SubcategoriaServiceImpl implements BotigaService {
     public void deleteProductById(Long id){
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
     }
-    
 
+    @Override
+    public List<CategoriaDTO> findAllCategorias() {
+        throw new UnsupportedOperationException("Este método debe implementarse en CategoriaServiceImp");
+    }
 
+    @Override
+    public Optional<CategoriaDTO> findCategoriaById(Long id) {
+        throw new UnsupportedOperationException("Este método debe implementarse en CategoriaServiceImp");
+    }
+
+    @Override
+    public CategoriaDTO saveCategoria(CategoriaDTO entity) {
+        throw new UnsupportedOperationException("Este método debe implementarse en CategoriaServiceImp");
+    }
+
+    @Override
+    public void deleteCategoriaById(Long id) {
+        throw new UnsupportedOperationException("Este método debe implementarse en CategoriaServiceImp");
+    }
 }
