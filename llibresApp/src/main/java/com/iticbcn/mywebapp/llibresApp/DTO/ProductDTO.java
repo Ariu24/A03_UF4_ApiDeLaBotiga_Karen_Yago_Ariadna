@@ -18,6 +18,6 @@ public class ProductDTO {
     private String company;
     private float price;
     private long units;
-    private Categoria categoria;
-    private Subcategoria subcategoria;
+    private String desc_Categoria;
+    private String desc_Subcategoria;
 }

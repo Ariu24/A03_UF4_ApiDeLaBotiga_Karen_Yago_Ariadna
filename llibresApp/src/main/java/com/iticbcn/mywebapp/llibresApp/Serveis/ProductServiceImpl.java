@@ -1,10 +1,13 @@
 package com.iticbcn.mywebapp.llibresApp.Serveis;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
@@ -60,16 +63,17 @@ public class ProductServiceImpl implements BotigaService {
 
     @Override
     public ProductDTO saveProduct(ProductDTO entity) {
-        Categoria categoria = entity.getCategoria();
-        Subcategoria subcategoryId = entity.getSubcategoria();
-        if (!categoriaServiceImpl.findCategoriaById(categoria.getId()).isPresent()) {
-            throw new IllegalArgumentException("La categoria amb ID " + categoria.getId() + " no existeix.");
-        }
-        if (!subcategoriaServiceImpl.findCategoriaById(subcategoryId.getId_subcategoria()).isPresent()) {
-            throw new IllegalArgumentException(
-                    "La subcategoria amb ID " + subcategoryId.getId_subcategoria() + " no existeix.");
-        }
+        //Optional<CategoriaDTO> categoria = categoriaServiceImpl.findByDescCategoria(entity.getDesc_Categoria());
+        //<SubcategoriaDTO> subcategoria= subcategoriaServiceImpl.findByDescSubcategoria(entity.getDesc_Categoria());
+        //if (!categoria.isPresent()) {
+        //    throw new IllegalArgumentException("La categoria no existeix.");
+        //}
+        //if (!subcategoria.isPresent()) {
+        //    throw new IllegalArgumentException(
+        //            "La subcategoria no existeix.");
+        //}
         Product producte = productMapper.ProductDTOtoProduct(entity);
+        producte.setCreationDate(LocalDateTime.now());
         Product productGuardat = productRepository.save(producte);
         return productMapper.ProductToProductDTO(productGuardat);
     }
@@ -92,6 +96,7 @@ public class ProductServiceImpl implements BotigaService {
     public void modificarPreu(Long id, float nouPreu) {
         Optional<ProductDTO> productOpt = findProductById(id);
         if (productOpt.isPresent()) {
+            
             productRepository.modificarPreu(id, nouPreu);
         } else {
             throw new IllegalArgumentException("El producte amb id " + id + " no existeix.");
