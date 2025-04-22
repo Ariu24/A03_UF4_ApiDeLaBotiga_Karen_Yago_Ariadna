@@ -76,16 +76,12 @@ public class ProductServiceImpl implements BotigaService {
             throw new IllegalArgumentException("La categoria no existeix.");
         }
         if (!subcategoria.isPresent()) {
-            throw new IllegalArgumentException(
-                    "La subcategoria no existeix.");
+            throw new IllegalArgumentException("La subcategoria no existeix.");
         }
         Product producte = productMapper.ProductDTOtoProduct(entity);
         producte.setCreationDate(LocalDateTime.now());
         producte.setUpdateDate(LocalDateTime.now());
         Categoria categoriaM = categoriaMapper.CategoriaDTOtoCategoria(categoria.get());
-        categoriaM.setCreationAt(LocalDateTime.now()); 
-        categoriaM.setStatus("aasdas");
-        categoriaM.setUpdatedAt(LocalDateTime.now()); 
         Subcategoria subcat = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoria.get());
         producte.setCategoria(categoriaM);
         producte.setSubcategoria(subcat);
