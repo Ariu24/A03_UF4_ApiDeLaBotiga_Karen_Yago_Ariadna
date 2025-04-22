@@ -24,7 +24,7 @@ public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_subcategoria")
-    private Long id_subcategoria;
+    private Long id;
     @Column (name = "desc_Subcategoria")
     private String desc_Subcategoria;
     @Column (name = "status_Subcategoria")
