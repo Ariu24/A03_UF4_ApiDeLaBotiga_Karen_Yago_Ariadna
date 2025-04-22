@@ -16,6 +16,7 @@ import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
+import com.iticbcn.mywebapp.llibresApp.Mapper.CategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Mapper.CategoriaMapperImpl;
 import com.iticbcn.mywebapp.llibresApp.Mapper.ProductMapper;
 import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
@@ -24,22 +25,26 @@ import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
 
 @Service
 public class ProductServiceImpl implements BotigaService {
-    @Autowired
     private ProductRepository productRepository;
 
     private ProductMapper productMapper;
 
     private CategoriaServiceImpl categoriaServiceImpl;
+    private CategoriaMapper categoriaMapper;
 
     private SubcategoriaServiceImpl subcategoriaServiceImpl;
+    private SubcategoriaMapper subcategoriaMapper;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper,
-            CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl) {
+            CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl, CategoriaMapper categoriaMapper,
+            SubcategoriaMapper subcategoriaMapper) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.categoriaServiceImpl = categoriaServiceImpl;
         this.subcategoriaServiceImpl = subcategoriaServiceImpl;
+        this.categoriaMapper = categoriaMapper;
+        this.subcategoriaMapper = subcategoriaMapper;
     }
 
     @Override
@@ -63,17 +68,27 @@ public class ProductServiceImpl implements BotigaService {
 
     @Override
     public ProductDTO saveProduct(ProductDTO entity) {
-        //Optional<CategoriaDTO> categoria = categoriaServiceImpl.findByDescCategoria(entity.getDesc_Categoria());
-        //<SubcategoriaDTO> subcategoria= subcategoriaServiceImpl.findByDescSubcategoria(entity.getDesc_Categoria());
-        //if (!categoria.isPresent()) {
-        //    throw new IllegalArgumentException("La categoria no existeix.");
-        //}
-        //if (!subcategoria.isPresent()) {
-        //    throw new IllegalArgumentException(
-        //            "La subcategoria no existeix.");
-        //}
+        Long id = 1L;
+        Optional<CategoriaDTO> categoria = categoriaServiceImpl.findCategoriaById(id);
+        
+        Optional<SubcategoriaDTO> subcategoria= subcategoriaServiceImpl.findSubCategoriaById(id);
+        if (!categoria.isPresent()) {
+            throw new IllegalArgumentException("La categoria no existeix.");
+        }
+        if (!subcategoria.isPresent()) {
+            throw new IllegalArgumentException(
+                    "La subcategoria no existeix.");
+        }
         Product producte = productMapper.ProductDTOtoProduct(entity);
         producte.setCreationDate(LocalDateTime.now());
+        producte.setUpdateDate(LocalDateTime.now());
+        Categoria categoriaM = categoriaMapper.CategoriaDTOtoCategoria(categoria.get());
+        categoriaM.setCreationAt(LocalDateTime.now()); 
+        categoriaM.setStatus("aasdas");
+        categoriaM.setUpdatedAt(LocalDateTime.now()); 
+        Subcategoria subcat = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoria.get());
+        producte.setCategoria(categoriaM);
+        producte.setSubcategoria(subcat);
         Product productGuardat = productRepository.save(producte);
         return productMapper.ProductToProductDTO(productGuardat);
     }
