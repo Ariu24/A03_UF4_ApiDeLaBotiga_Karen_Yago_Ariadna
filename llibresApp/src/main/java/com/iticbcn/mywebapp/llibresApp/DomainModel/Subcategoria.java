@@ -23,14 +23,15 @@ import lombok.NoArgsConstructor;
 public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_subcategoria")
     private Long id_subcategoria;
-    @Column
+    @Column (name = "desc_Subcategoria")
     private String desc_Subcategoria;
-    @Column
+    @Column (name = "status_Subcategoria")
     private String status_Subcategoria;
-    @Column
+    @Column (name = "creation_at")
     private LocalDateTime creation_at;
-    @Column 
+    @Column (name = "updated_at")
     private LocalDateTime updated_at;
 
     @ManyToOne
@@ -38,6 +39,14 @@ public class Subcategoria {
     private Categoria categoria;
     @OneToMany(mappedBy = "subcategoria")
     private List<Product> productes;
+
+    public void addCategoria(Categoria categoria){
+        
+        
+        
+
+    }
+
 
 
 

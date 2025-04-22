@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
+import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.Serveis.CategoriaServiceImpl;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductServiceImpl;
+import com.iticbcn.mywebapp.llibresApp.Serveis.SubcategoriaServiceImpl;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -25,6 +27,8 @@ public class WebController {
     private CategoriaServiceImpl categoriaServiceImpl;
     @Autowired
     private ProductServiceImpl productServiceImpl;
+    @Autowired
+    private SubcategoriaServiceImpl subcategoriaServiceImpl;
 
     @PostMapping("/inserirCategoria")
     public String inserirCategoria(@RequestBody CategoriaDTO categoriaDTO){
@@ -54,6 +58,19 @@ public class WebController {
         Optional<ProductDTO> productes = productServiceImpl.findProductByName(nom);
         return productes;
     }
+    
+    @PostMapping("/inserirSubcategoria")
+    public String inserirsubCategoria(@RequestBody SubcategoriaDTO subcategoriaDTO){
+        productServiceImpl.savedSubcategoria(subcategoriaDTO);
+        return "Producte inserit correctament";
+    }
+    @GetMapping("/LlistaSubcategoria")
+    public List<SubcategoriaDTO>recerca(){
+        List<SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
+        return subcategorias;
+
+    }
+    
 
 
 }

@@ -108,4 +108,5 @@ public class SubcategoriaServiceImpl implements BotigaService {
     public void deleteCategoriaById(Long id) {
         throw new UnsupportedOperationException("Este método debe implementarse en CategoriaServiceImp");
     }
+    
 }
