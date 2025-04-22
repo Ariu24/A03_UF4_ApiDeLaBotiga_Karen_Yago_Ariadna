@@ -5,11 +5,14 @@ import org.springframework.stereotype.Repository;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface SubcategoriaRepository extends JpaRepository<Subcategoria,Long> {
     List<Subcategoria> findByCategoriaId(Long categoriaId);
+    Optional<Subcategoria> findByDescSubcategoria(String descSubcategoria);
+
 
 } 

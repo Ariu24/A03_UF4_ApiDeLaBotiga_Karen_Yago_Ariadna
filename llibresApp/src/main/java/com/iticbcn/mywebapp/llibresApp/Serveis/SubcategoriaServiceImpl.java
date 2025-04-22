@@ -69,7 +69,11 @@ public class SubcategoriaServiceImpl implements BotigaService {
         }
         return subcategoriaDTOs;
     }
-    
+    public Optional<SubcategoriaDTO> findByDescSubcategoria(String desc) {
+        Optional<Subcategoria> subcategoria = subcategoriaRepository.findByDescSubcategoria(desc);
+        return subcategoria.map(subcategoriaMapper::SubcategoriaToSubcategoriaDTO);
+    }
+
     @Override
     public List<ProductDTO> findAllProducts(){
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");

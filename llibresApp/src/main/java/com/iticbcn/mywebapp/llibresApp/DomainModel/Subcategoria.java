@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_subcategoria")
+    @Column(name = "id")
     private Long id;
     @Column (name = "desc_Subcategoria")
     private String desc_Subcategoria;
@@ -40,14 +40,14 @@ public class Subcategoria {
     @OneToMany(mappedBy = "subcategoria")
     private List<Product> productes;
 
-    public void addCategoria(Categoria categoria){
-        
-        
-        
-
+    public void addProduct(Product product) {
+        productes.add(product);
+        product.setSubcategoria(this);
     }
 
-
-
-
+    public void removeProduct(Product product) {
+        productes.remove(product);
+        product.setSubcategoria(null);
+    }
 }
+  
