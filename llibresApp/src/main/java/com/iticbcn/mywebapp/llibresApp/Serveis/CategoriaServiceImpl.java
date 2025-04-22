@@ -52,7 +52,6 @@ public class CategoriaServiceImpl implements BotigaService {
         Categoria categoria = categoriaMapper.CategoriaDTOtoCategoria(categoriaDTO);
         categoria.setCreationAt(LocalDateTime.now());
         categoria.setStatus("Actiu");
-        System.out.println("DESC: "+categoriaDTO.getDescCategoria());
         System.out.println("DESC2: "+categoria.getDescCategoria());
         Categoria savedCategoria = categoriaRepository.save(categoria);
         return categoriaMapper.CategoriaToCategoriaDTO(savedCategoria);

@@ -17,12 +17,12 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria") 
-    private Long id; 
+    private Long id_categoria; 
 
     @Column(name = "desc_categoria", nullable = false)
     private String descCategoria; 
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status_categoria", nullable = false)
     private String status; 
 
     @Column(name = "creation_at", nullable = false)
