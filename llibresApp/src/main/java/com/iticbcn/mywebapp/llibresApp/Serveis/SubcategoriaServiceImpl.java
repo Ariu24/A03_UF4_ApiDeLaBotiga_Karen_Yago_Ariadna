@@ -61,14 +61,6 @@ public class SubcategoriaServiceImpl implements BotigaService {
         subcategoriaRepository.deleteById(id);
     }
     
-    public List<SubcategoriaDTO> findByCategoriaId(Long categoriaId) {
-        List<Subcategoria> subcategories = subcategoriaRepository.findByCategoriaId(categoriaId);
-        List<SubcategoriaDTO> subcategoriaDTOs = new ArrayList<>();
-        for (Subcategoria s : subcategories) {
-            subcategoriaDTOs.add(subcategoriaMapper.SubcategoriaToSubcategoriaDTO(s));
-        }
-        return subcategoriaDTOs;
-    }
     public Optional<SubcategoriaDTO> findByDescSubcategoria(String desc) {
         Optional<Subcategoria> subcategoria = subcategoriaRepository.findByDescSubcategoria(desc);
         return subcategoria.map(subcategoriaMapper::SubcategoriaToSubcategoriaDTO);

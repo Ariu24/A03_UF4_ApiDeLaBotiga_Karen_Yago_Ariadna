@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface SubcategoriaRepository extends JpaRepository<Subcategoria,Long> {
-    List<Subcategoria> findByCategoriaId(Long categoriaId);
     Optional<Subcategoria> findByDescSubcategoria(String descSubcategoria);
 
 
