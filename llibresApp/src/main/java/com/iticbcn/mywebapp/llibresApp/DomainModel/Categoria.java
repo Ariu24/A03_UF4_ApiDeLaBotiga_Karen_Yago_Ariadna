@@ -28,7 +28,7 @@ public class Categoria {
     @Column(name = "creation_at", nullable = false)
     private LocalDateTime creationAt; 
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt; 
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)

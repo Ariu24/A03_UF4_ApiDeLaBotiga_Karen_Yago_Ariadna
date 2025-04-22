@@ -28,6 +28,7 @@ public class WebController {
 
     @PostMapping("/inserirCategoria")
     public String inserirCategoria(@RequestBody CategoriaDTO categoriaDTO){
+        System.out.println("DESC1: "+categoriaDTO.getDescCategoria());
         categoriaServiceImpl.saveCategoria(categoriaDTO);
         return "Categoria inserida correctament";
     }

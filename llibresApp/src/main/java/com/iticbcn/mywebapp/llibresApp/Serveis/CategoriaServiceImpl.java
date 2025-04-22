@@ -50,8 +50,11 @@ public class CategoriaServiceImpl implements BotigaService {
     @Override
     public CategoriaDTO saveCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = categoriaMapper.CategoriaDTOtoCategoria(categoriaDTO);
+        categoria.setCreationAt(LocalDateTime.now());
+        categoria.setStatus("Actiu");
+        System.out.println("DESC: "+categoriaDTO.getDescCategoria());
+        System.out.println("DESC2: "+categoria.getDescCategoria());
         Categoria savedCategoria = categoriaRepository.save(categoria);
-        savedCategoria.setCreationAt(LocalDateTime.now());
         return categoriaMapper.CategoriaToCategoriaDTO(savedCategoria);
     }
 
