@@ -1,5 +1,6 @@
 package com.iticbcn.mywebapp.llibresApp.Serveis;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,7 @@ public class CategoriaServiceImpl implements BotigaService {
     public CategoriaDTO saveCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = categoriaMapper.CategoriaDTOtoCategoria(categoriaDTO);
         Categoria savedCategoria = categoriaRepository.save(categoria);
+        savedCategoria.setCreationAt(LocalDateTime.now());
         return categoriaMapper.CategoriaToCategoriaDTO(savedCategoria);
     }
 
