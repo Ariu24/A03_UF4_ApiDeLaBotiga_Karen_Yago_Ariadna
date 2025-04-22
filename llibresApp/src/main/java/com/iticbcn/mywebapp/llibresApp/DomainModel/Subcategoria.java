@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,13 +29,15 @@ public class Subcategoria {
     private Timestamp creation_at;
     @Column 
     private Timestamp updated_at;
-
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    @OneToMany
-    @JoinColumn(name="product_id")
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
+    
+    /*@ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;*/
+   
 
 
 
