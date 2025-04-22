@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `desc_categoria` varchar(255) NOT NULL,
   `status_categoria` varchar(50) NOT NULL,
   `creation_at` datetime(6) NOT NULL,
-  `updated_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6),
   PRIMARY KEY (`id_categoria`)
 );
 
