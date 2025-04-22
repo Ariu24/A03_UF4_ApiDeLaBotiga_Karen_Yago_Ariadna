@@ -14,7 +14,7 @@ import com.iticbcn.mywebapp.llibresApp.Serveis.CategoriaServiceImpl;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductServiceImpl;
 import com.iticbcn.mywebapp.llibresApp.Serveis.SubcategoriaServiceImpl;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody; 
 
 import java.util.List;
 import java.util.Optional;

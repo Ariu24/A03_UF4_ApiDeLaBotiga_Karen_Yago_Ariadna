@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `desc_categoria` varchar(255) NOT NULL,
   `status_categoria` varchar(50) NOT NULL,
   `creation_at` datetime(6) NOT NULL,
-  `updated_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6),
   PRIMARY KEY (`id_categoria`)
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `subcategories` (
   `id_subcategoria` bigint(20) NOT NULL AUTO_INCREMENT,
   `desc_subcategoria` varchar(255) NOT NULL,
   `status_subcategoria` varchar(50) NOT NULL,
-  `categoria_id` bigint(20) NOT NULL, 
+  `id_categoria` bigint(20) NOT NULL, 
   `creation_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
   PRIMARY KEY (`id_subcategoria`),
