@@ -1,5 +1,6 @@
 package com.iticbcn.mywebapp.llibresApp.Serveis;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
+import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.Mapper.CategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.CategoriaRepository;
@@ -49,6 +51,7 @@ public class CategoriaServiceImpl implements BotigaService {
     public CategoriaDTO saveCategoria(CategoriaDTO categoriaDTO) {
         Categoria categoria = categoriaMapper.CategoriaDTOtoCategoria(categoriaDTO);
         Categoria savedCategoria = categoriaRepository.save(categoria);
+        savedCategoria.setCreationAt(LocalDateTime.now());
         return categoriaMapper.CategoriaToCategoriaDTO(savedCategoria);
     }
 
@@ -84,5 +87,25 @@ public class CategoriaServiceImpl implements BotigaService {
     @Override
     public void deleteProductById(Long id) {
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
+    }
+
+    @Override
+    public List<SubcategoriaDTO> findAllSubcategorias() {
+        throw new UnsupportedOperationException("Este método debe implementarse en SubcategoriaServiceImpl");
+    }
+
+    @Override
+    public Optional<SubcategoriaDTO> findSubCategoriaById(Long id) {
+        throw new UnsupportedOperationException("Este método debe implementarse en SubcategoriaServiceImpl");
+    }
+
+    @Override
+    public SubcategoriaDTO savedSubcategoria(SubcategoriaDTO entity) {
+        throw new UnsupportedOperationException("Este método debe implementarse en SubcategoriaServiceImpl");
+    }
+
+    @Override
+    public void deleteSubcategoriaId(Long id) {
+        throw new UnsupportedOperationException("Este método debe implementarse en SubcategoriaServiceImpl");
     }
 }

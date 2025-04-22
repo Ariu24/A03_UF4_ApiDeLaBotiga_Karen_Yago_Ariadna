@@ -1,6 +1,8 @@
 package com.iticbcn.mywebapp.llibresApp.DomainModel;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,24 +23,29 @@ import lombok.NoArgsConstructor;
 public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Subategoria;
-    @Column
+    @Column(name = "id_subcategoria")
+    private Long id_subcategoria;
+    @Column (name = "desc_Subcategoria")
     private String desc_Subcategoria;
-    @Column
+    @Column (name = "status_Subcategoria")
     private String status_Subcategoria;
-    @Column
-    private Timestamp creation_at;
-    @Column 
-    private Timestamp updated_at;
-    private Categoria categoria;
+    @Column (name = "creation_at")
+    private LocalDateTime creation_at;
+    @Column (name = "updated_at")
+    private LocalDateTime updated_at;
+
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-    
-    /*@ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;*/
-   
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
+    @OneToMany(mappedBy = "subcategoria")
+    private List<Product> productes;
+
+    public void addCategoria(Categoria categoria){
+        
+        
+        
+
+    }
 
 
 

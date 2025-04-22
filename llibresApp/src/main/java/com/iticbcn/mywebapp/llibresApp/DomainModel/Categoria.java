@@ -1,38 +1,59 @@
 package com.iticbcn.mywebapp.llibresApp.DomainModel;
 
-import java.security.Timestamp;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList; // Usaremos ArrayList para inicializar listas
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="category")
+@Table(name = "categories") 
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_Categoria")
-    private Long id_Categoria ;
-    @Column(nullable = false)
-    private String desc_Categoria;
-    @Column(nullable = false)
-    private String status_Categoria;
-    @Column(nullable = false)
-    private Timestamp creation_at;
-    @Column(nullable = false)
-    private Timestamp updated_at ;
-    @Column(nullable = false)
-    private Subcategoria subcategoria;
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-}
+    @Column(name = "id_categoria") 
+    private Long id; 
 
+    @Column(name = "desc_categoria", nullable = false)
+    private String descCategoria; 
+
+    @Column(name = "status", nullable = false)
+    private String status; 
+
+    @Column(name = "creation_at", nullable = false)
+    private LocalDateTime creationAt; 
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt; 
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<Subcategoria> subcategorias = new ArrayList<>(); 
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<Product> productos = new ArrayList<>(); 
+
+    public void addSubcategoria(Subcategoria subcategoria) {
+        subcategorias.add(subcategoria);
+        subcategoria.setCategoria(this);
+    }
+
+    public void removeSubcategoria(Subcategoria subcategoria) {
+        subcategorias.remove(subcategoria);
+        subcategoria.setCategoria(null);
+    }
+
+    public void addProduct(Product product) {
+        productos.add(product);
+        product.setCategoria(this);
+    }
+
+    public void removeProduct(Product product) {
+        productos.remove(product);
+        product.setCategoria(null);
+    }
+}
