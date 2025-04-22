@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
@@ -18,6 +19,7 @@ import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.ProductRepository;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
 
+@Service
 public class ProductServiceImpl implements BotigaService {
     @Autowired
     private ProductRepository productRepository;
@@ -29,7 +31,8 @@ public class ProductServiceImpl implements BotigaService {
     private SubcategoriaServiceImpl subcategoriaServiceImpl;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper, CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper,
+            CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.categoriaServiceImpl = categoriaServiceImpl;
@@ -59,11 +62,12 @@ public class ProductServiceImpl implements BotigaService {
     public ProductDTO saveProduct(ProductDTO entity) {
         Categoria categoria = entity.getCategoria();
         Subcategoria subcategoryId = entity.getSubcategoria();
-        if (!categoriaServiceImpl.findCategoriaById(categoria.getIdCategoria()).isPresent()) {
-            throw new IllegalArgumentException("La categoria amb ID " + categoria.getIdCategoria() + " no existeix.");
+        if (!categoriaServiceImpl.findCategoriaById(categoria.getId()).isPresent()) {
+            throw new IllegalArgumentException("La categoria amb ID " + categoria.getId() + " no existeix.");
         }
         if (!subcategoriaServiceImpl.findCategoriaById(subcategoryId.getId_subcategoria()).isPresent()) {
-            throw new IllegalArgumentException("La subcategoria amb ID " + subcategoryId.getId_subcategoria() + " no existeix.");
+            throw new IllegalArgumentException(
+                    "La subcategoria amb ID " + subcategoryId.getId_subcategoria() + " no existeix.");
         }
         Product producte = productMapper.ProductDTOtoProduct(entity);
         Product productGuardat = productRepository.save(producte);
@@ -72,8 +76,25 @@ public class ProductServiceImpl implements BotigaService {
 
     @Override
     public void deleteProductById(Long id) {
-        if(findProductById(id).isPresent()){
+        if (findProductById(id).isPresent()) {
             productRepository.deleteById(id);
+        }
+    }
+
+    public Optional<ProductDTO> findProductByName(String nom) {
+        Optional<Product> producte = productRepository.findProductByName(nom);
+        if (producte.isPresent()) {
+            return Optional.of(productMapper.ProductToProductDTO(producte.get()));
+        }
+        return Optional.empty();
+    }
+
+    public void modificarPreu(Long id, float nouPreu) {
+        Optional<ProductDTO> productOpt = findProductById(id);
+        if (productOpt.isPresent()) {
+            productRepository.modificarPreu(id, nouPreu);
+        } else {
+            throw new IllegalArgumentException("El producte amb id " + id + " no existeix.");
         }
     }
 
