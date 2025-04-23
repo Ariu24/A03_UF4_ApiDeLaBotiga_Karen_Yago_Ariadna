@@ -45,7 +45,11 @@ public class WebController {
 
     @PostMapping("/inserirProducte")
     public String inserirProducte(@RequestBody ProductDTO producteDTO){
-        productServiceImpl.saveProduct(producteDTO);
+        try{
+            productServiceImpl.saveProduct(producteDTO);
+        }catch(Exception e){
+            return e.toString();
+        }        
         return "Producte inserit correctament";
     }
     @GetMapping("/LlistarProductes") 

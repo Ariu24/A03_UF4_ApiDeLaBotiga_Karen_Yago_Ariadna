@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SubcategoriaDTO {
 
-    private String desc_Subcategoria;
-    
-    private String status_Subcategoria;
+    private String descSubcategoria;
+    private String desc_Categoria;
 
-    private Categoria categoria;
-    
 }

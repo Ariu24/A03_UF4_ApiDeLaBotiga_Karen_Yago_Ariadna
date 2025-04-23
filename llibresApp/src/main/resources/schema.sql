@@ -4,7 +4,7 @@ USE botiga;
 
 CREATE TABLE IF NOT EXISTS `categories` (
   `id_categoria` bigint(20) NOT NULL AUTO_INCREMENT,
-  `desc_categoria` varchar(255) NOT NULL,
+  `desc_categoria` varchar(255) NOT NULL UNIQUE,
   `status_categoria` varchar(50) NOT NULL,
   `creation_at` datetime(6) NOT NULL,
   `updated_at` datetime(6),
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `subcategoria` (
 
 CREATE TABLE IF NOT EXISTS `products` (
   `product_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL UNIQUE,
   `description` varchar(255) NOT NULL,
   `company` varchar(255) NOT NULL,
   `price` float NOT NULL,
