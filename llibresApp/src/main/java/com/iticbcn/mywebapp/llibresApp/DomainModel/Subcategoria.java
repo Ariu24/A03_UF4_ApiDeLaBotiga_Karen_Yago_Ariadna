@@ -23,10 +23,10 @@ import lombok.NoArgsConstructor;
 public class Subcategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_subcategoria")
     private Long id;
     @Column (name = "desc_Subcategoria")
-    private String desc_Subcategoria;
+    private String descSubcategoria;
     @Column (name = "status_Subcategoria")
     private String status_Subcategoria;
     @Column (name = "creation_at")
