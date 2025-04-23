@@ -11,6 +11,7 @@ import java.util.Optional;
 import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
@@ -22,6 +23,8 @@ public class SubcategoriaServiceImpl implements BotigaService {
 
     private SubcategoriaMapper subcategoriaMapper;
 
+@Autowired
+private CategoriaServiceImpl categoriaServiceImpl;
     @Autowired
     public SubcategoriaServiceImpl(SubcategoriaRepository subcategoriaRepository, SubcategoriaMapper subcategoriaMapper){
         this.subcategoriaRepository = subcategoriaRepository;
@@ -48,13 +51,19 @@ public class SubcategoriaServiceImpl implements BotigaService {
     }
 
     @Override
-    public SubcategoriaDTO savedSubcategoria(SubcategoriaDTO subcategoriaDTO){
+    public SubcategoriaDTO savedSubcategoria(SubcategoriaDTO subcategoriaDTO) {
         Subcategoria subcategoria = subcategoriaMapper.SubcategoriaDTOtoSubcategoria(subcategoriaDTO);
+        Optional<Categoria> categoriaExistente = categoriaServiceImpl.findBydescCategoria(subcategoriaDTO.getDescCategoria());  
+        if (!categoriaExistente.isPresent()) {
+            throw new RuntimeException("La categoría con descripción '" + subcategoriaDTO.getDescCategoria() + "' no existe.");
+        }   
+        subcategoria.setCategoria(categoriaExistente.get());
+        subcategoria.setCreation_at(LocalDateTime.now());
+        subcategoria.setStatus_Subcategoria("Actiu");
         Subcategoria savedSubcategoria = subcategoriaRepository.save(subcategoria);
-        savedSubcategoria.setCreation_at(LocalDateTime.now());
         return subcategoriaMapper.SubcategoriaToSubcategoriaDTO(savedSubcategoria);
-
     }
+    
 
     @Override
     public void deleteSubcategoriaId(Long id){

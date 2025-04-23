@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.ProductDTO;
 import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
+import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 import com.iticbcn.mywebapp.llibresApp.Serveis.CategoriaServiceImpl;
 import com.iticbcn.mywebapp.llibresApp.Serveis.ProductServiceImpl;
 import com.iticbcn.mywebapp.llibresApp.Serveis.SubcategoriaServiceImpl;
 
-import org.springframework.web.bind.annotation.RequestBody; 
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,11 +48,7 @@ public class WebController {
 
     @PostMapping("/inserirProducte")
     public String inserirProducte(@RequestBody ProductDTO producteDTO){
-        try{
-            productServiceImpl.saveProduct(producteDTO);
-        }catch(Exception e){
-            return e.toString();
-        }        
+        productServiceImpl.saveProduct(producteDTO);
         return "Producte inserit correctament";
     }
     @GetMapping("/LlistarProductes") 
@@ -62,18 +61,22 @@ public class WebController {
         Optional<ProductDTO> productes = productServiceImpl.findProductByName(nom);
         return productes;
     }
-    
+
+
     @PostMapping("/inserirSubcategoria")
-    public String inserirsubCategoria(@RequestBody SubcategoriaDTO subcategoriaDTO){
-        productServiceImpl.savedSubcategoria(subcategoriaDTO);
-        return "Producte inserit correctament";
+    public String inserirSubcategoria(@RequestBody SubcategoriaDTO subcategoriaDTO) {
+        System.out.println("DESC Subcategoria: " + subcategoriaDTO.getDescSubcategoria());
+        subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
+        return "Subcategoria inserida correctament";
     }
+
+
+
     @GetMapping("/LlistaSubcategoria")
     public List<SubcategoriaDTO>recerca(){
-        return subcategoriaServiceImpl.findAllSubcategorias();
-
+        List <SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
+        return subcategorias;
     }
-    
-
 
 }
+    

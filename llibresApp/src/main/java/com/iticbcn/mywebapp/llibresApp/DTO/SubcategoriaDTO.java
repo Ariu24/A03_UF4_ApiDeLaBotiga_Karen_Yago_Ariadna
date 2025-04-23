@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class SubcategoriaDTO {
 
     private String descSubcategoria;
-    private String desc_Categoria;
+    private String descCategoria;
 
 }
