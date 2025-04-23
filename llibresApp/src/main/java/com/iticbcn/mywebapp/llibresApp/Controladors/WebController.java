@@ -66,8 +66,7 @@ public class WebController {
     }
     @GetMapping("/LlistaSubcategoria")
     public List<SubcategoriaDTO>recerca(){
-        List<SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
-        return subcategorias;
+        return subcategoriaServiceImpl.findAllSubcategorias();
 
     }
     
