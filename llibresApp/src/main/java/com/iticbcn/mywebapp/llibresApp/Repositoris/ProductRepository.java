@@ -18,6 +18,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findProductByName(String nom);
+    void deleteProductByName(String nom);
 
     @Modifying
     @Transactional

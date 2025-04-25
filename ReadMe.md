@@ -22,9 +22,17 @@ En cas que no hi hagi cap producte amb aquest nom retorna:
 Ara si anem a revisar el producte:
 ![alt text](image-18.png)
 veiem el preu actualitzat
+I a la base de dades el updatedAt canviat
+![alt text](image-21.png)
 En cas de voler actualitzar un producte que no existeix:
 ![alt text](image-19.png)
 ![alt text](image-20.png)
+- Eliminar producte
+![alt text](image-25.png)
+I si el cerquem podem veure que no apareix:
+![alt text](image-26.png)
+En cas que el producte a eliminar no existeixi:
+![alt text](image-24.png)
 Comprovacions per Categoria:
 - InserirCategoria
 ![alt text](image-9.png)
@@ -34,9 +42,14 @@ Comprovacions per Categoria:
 ![alt text](image-12.png)
 ![alt text](image-13.png)
 - CercaCategoria
+![alt text](image-23.png)
+En cas que no existeixi:
+![alt text](image-22.png)
 Comprovacions per SubCategoria:
 - InserirSubcategoria
 - LlistarSubcategories
-![alt text](image-14.png)
-![alt text](image-15.png)
 - CercarSubcategoria
+
+
+
+Els nostres tres endPoints extres han sigut: CercarSubcategoria, CercarCategoria i eliminarProducte

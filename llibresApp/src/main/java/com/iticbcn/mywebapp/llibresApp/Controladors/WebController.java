@@ -3,6 +3,7 @@ package com.iticbcn.mywebapp.llibresApp.Controladors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,7 +29,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/botiga")
 public class WebController {
- 
+
     @Autowired
     private CategoriaServiceImpl categoriaServiceImpl;
     @Autowired
@@ -37,16 +38,13 @@ public class WebController {
     private SubcategoriaServiceImpl subcategoriaServiceImpl;
 
     @PostMapping("/inserirCategoria")
-    public String inserirCategoria(@RequestBody CategoriaDTO categoriaDTO){
-        try{
-            categoriaServiceImpl.saveCategoria(categoriaDTO);
-            return "Categoria inserida correctament";
-        }catch(Exception e){
-            return e.toString();
-        }   
+    public String inserirCategoria(@RequestBody CategoriaDTO categoriaDTO) {
+        System.out.println("DESC1: " + categoriaDTO.getDescCategoria());
+        categoriaServiceImpl.saveCategoria(categoriaDTO);
+        return "Categoria inserida correctament";
     }
 
-    @GetMapping("/LlistarCategories") 
+    @GetMapping("/LlistarCategories")
     public List<CategoriaDTO> consultaCategoria() {
         List<CategoriaDTO> categorias = categoriaServiceImpl.findAllCategorias();
         return categorias;
@@ -55,29 +53,40 @@ public class WebController {
     @GetMapping("/LlistarCategoria")
     public Optional<CategoriaDTO> buscarCategoria(@RequestParam String desc) {
         Optional<CategoriaDTO> categoria = categoriaServiceImpl.findBydescCategoriaDTO(desc);
-        return categoria; 
+        return categoria;
     }
 
     @PostMapping("/inserirProducte")
-    public String inserirProducte(@RequestBody ProductDTO producteDTO){
-        try{
+    public String inserirProducte(@RequestBody ProductDTO producteDTO) {
+        try {
             productServiceImpl.saveProduct(producteDTO);
             return "Producte inserit correctament";
-        }catch(Exception e){
+        } catch (Exception e) {
             return e.toString();
-        }   
+        }
     }
-    @GetMapping("/LlistarProductes") 
+
+    @GetMapping("/LlistarProductes")
     public List<ProductDTO> buscar() {
         List<ProductDTO> productes = productServiceImpl.findAllProducts();
         return productes;
     }
-    @GetMapping("/CercaProductes") 
+
+    @GetMapping("/CercaProductes")
     public Optional<ProductDTO> buscarProducte(@RequestParam String nom) {
         Optional<ProductDTO> productes = productServiceImpl.findProductByName(nom);
         return productes;
     }
 
+    @DeleteMapping("/EliminarProducte")
+    public String eliminarProducte(@RequestParam String nom) {
+        try {
+            productServiceImpl.deleteProductByName(nom);
+            return "Producte eliminat correctament.";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
 
     @PostMapping("/inserirSubcategoria")
     public String inserirSubcategoria(@RequestBody SubcategoriaDTO subcategoriaDTO) {
@@ -85,6 +94,7 @@ public class WebController {
         subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
         return "Subcategoria inserida correctament";
     }
+
     @PutMapping("/ModificarPreu")
     public String modificarPreu(@RequestParam String nom, @RequestParam float nouPreu) {
         try {
@@ -95,12 +105,10 @@ public class WebController {
         }
     }
 
-
     @GetMapping("/LlistaSubcategoria")
-    public List<SubcategoriaDTO>recerca(){
-        List <SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
+    public List<SubcategoriaDTO> recerca() {
+        List<SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
         return subcategorias;
     }
 
 }
-    

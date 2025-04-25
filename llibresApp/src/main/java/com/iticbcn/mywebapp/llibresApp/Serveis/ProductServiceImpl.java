@@ -18,6 +18,8 @@ import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
 import com.iticbcn.mywebapp.llibresApp.Mapper.ProductMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.ProductRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductServiceImpl implements BotigaService {
     private ProductRepository productRepository;
@@ -82,7 +84,14 @@ public class ProductServiceImpl implements BotigaService {
             productRepository.deleteById(id);
         }
     }
-
+    @Transactional
+    public void deleteProductByName(String name){
+        if (findProductByName(name).isPresent()) {
+            productRepository.deleteProductByName(name);
+        } else {
+            throw new IllegalArgumentException("El producte amb nom " + name + " no existeix.");
+        }
+    }
     public Optional<ProductDTO> findProductByName(String nom) {
         Optional<Product> producte = productRepository.findProductByName(nom);
         if (producte.isPresent()) {
