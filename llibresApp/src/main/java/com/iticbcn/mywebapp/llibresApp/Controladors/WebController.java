@@ -1,8 +1,11 @@
 package com.iticbcn.mywebapp.llibresApp.Controladors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,8 +51,12 @@ public class WebController {
 
     @PostMapping("/inserirProducte")
     public String inserirProducte(@RequestBody ProductDTO producteDTO){
-        productServiceImpl.saveProduct(producteDTO);
-        return "Producte inserit correctament";
+        try{
+            productServiceImpl.saveProduct(producteDTO);
+            return "Producte inserit correctament";
+        }catch(Exception e){
+            return e.toString();
+        }   
     }
     @GetMapping("/LlistarProductes") 
     public List<ProductDTO> buscar() {
@@ -69,7 +76,15 @@ public class WebController {
         subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
         return "Subcategoria inserida correctament";
     }
-
+    @PutMapping("/ModificarPreu")
+    public String modificarPreu(@RequestParam String nom, @RequestParam float nouPreu) {
+        try {
+            productServiceImpl.modificarPreu(nom, nouPreu);
+            return "Preu modificat correctament";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
 
 
     @GetMapping("/LlistaSubcategoria")

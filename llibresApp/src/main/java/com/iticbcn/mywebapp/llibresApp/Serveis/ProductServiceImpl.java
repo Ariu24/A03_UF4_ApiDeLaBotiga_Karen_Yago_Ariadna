@@ -1,13 +1,11 @@
 package com.iticbcn.mywebapp.llibresApp.Serveis;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
@@ -16,12 +14,8 @@ import com.iticbcn.mywebapp.llibresApp.DTO.SubcategoriaDTO;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Categoria;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Product;
 import com.iticbcn.mywebapp.llibresApp.DomainModel.Subcategoria;
-import com.iticbcn.mywebapp.llibresApp.Mapper.CategoriaMapper;
-import com.iticbcn.mywebapp.llibresApp.Mapper.CategoriaMapperImpl;
 import com.iticbcn.mywebapp.llibresApp.Mapper.ProductMapper;
-import com.iticbcn.mywebapp.llibresApp.Mapper.SubcategoriaMapper;
 import com.iticbcn.mywebapp.llibresApp.Repositoris.ProductRepository;
-import com.iticbcn.mywebapp.llibresApp.Repositoris.SubcategoriaRepository;
 
 @Service
 public class ProductServiceImpl implements BotigaService {
@@ -30,21 +24,16 @@ public class ProductServiceImpl implements BotigaService {
     private ProductMapper productMapper;
 
     private CategoriaServiceImpl categoriaServiceImpl;
-    private CategoriaMapper categoriaMapper;
 
     private SubcategoriaServiceImpl subcategoriaServiceImpl;
-    private SubcategoriaMapper subcategoriaMapper;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper,
-            CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl, CategoriaMapper categoriaMapper,
-            SubcategoriaMapper subcategoriaMapper) {
+            CategoriaServiceImpl categoriaServiceImpl, SubcategoriaServiceImpl subcategoriaServiceImpl) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.categoriaServiceImpl = categoriaServiceImpl;
         this.subcategoriaServiceImpl = subcategoriaServiceImpl;
-        this.categoriaMapper = categoriaMapper;
-        this.subcategoriaMapper = subcategoriaMapper;
     }
 
     @Override
@@ -101,13 +90,12 @@ public class ProductServiceImpl implements BotigaService {
         return Optional.empty();
     }
 
-    public void modificarPreu(Long id, float nouPreu) {
+    public void modificarPreu(String nom, float nouPreu) {
         Optional<ProductDTO> productOpt = findProductById(id);
         if (productOpt.isPresent()) {
-            
-            productRepository.modificarPreu(id, nouPreu);
+            productRepository.modificarPreu(nom, nouPreu);
         } else {
-            throw new IllegalArgumentException("El producte amb id " + id + " no existeix.");
+            throw new IllegalArgumentException("El producte amb nom " + nom + " no existeix.");
         }
     }
 
