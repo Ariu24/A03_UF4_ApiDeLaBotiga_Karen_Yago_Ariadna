@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `subcategoria` (
   `status_subcategoria` varchar(50) NOT NULL,
   `id_categoria` bigint(20) NOT NULL, 
   `creation_at` datetime(6) NOT NULL,
-  `updated_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) ,
   PRIMARY KEY (`id_subcategoria`),
   CONSTRAINT `fk_subcategoria_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categories` (`id_categoria`) ON DELETE CASCADE 
 );
