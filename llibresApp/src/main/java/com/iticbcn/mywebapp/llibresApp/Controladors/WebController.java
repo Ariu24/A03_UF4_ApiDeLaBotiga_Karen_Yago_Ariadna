@@ -110,7 +110,14 @@ public class WebController {
         List <SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
         return subcategorias;
     }
-    
+
+    @GetMapping("/LlistaSubcategroia")
+    public Optional<SubcategoriaDTO>recerca_Subcategoria(@RequestParam String desc){
+        Optional<SubcategoriaDTO> subcategoria= subcategoriaServiceImpl.findBydescSubcategoriaDTO(desc);
+        return subcategoria;
+
+    }
+
 
 
 
