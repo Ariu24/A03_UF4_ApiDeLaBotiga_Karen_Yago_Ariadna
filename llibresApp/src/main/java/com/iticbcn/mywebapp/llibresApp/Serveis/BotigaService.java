@@ -17,6 +17,7 @@ public interface BotigaService {
     Optional<ProductDTO> findProductById(Long id);
     ProductDTO saveProduct(ProductDTO entity);
     void deleteProductBy(Long id); 
+    
 
     //TODO: Subcategoria
     List<SubcategoriaDTO> findAllSubcategorias();
