@@ -91,8 +91,18 @@ public class WebController {
     @PostMapping("/inserirSubcategoria")
     public String inserirSubcategoria(@RequestBody SubcategoriaDTO subcategoriaDTO) {
         System.out.println("DESC Subcategoria: " + subcategoriaDTO.getDescSubcategoria());
-        subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
-        return "Subcategoria inserida correctament";
+        Optional<Categoria> categoriaExistente = categoriaServiceImpl.findBydescCategoria(subcategoriaDTO.getDescCategoria());  
+        if (categoriaExistente.isPresent()) {
+            try{
+                subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
+                return "Subcategoria inserida correctament";
+            }catch(Exception e){
+                return "Hubo un problema al insertar la subcategoria";
+            }
+        } else{
+            return "La categoria no existeix";
+        }
+                
     }
 
     @PutMapping("/ModificarPreu")
@@ -105,10 +115,24 @@ public class WebController {
         }
     }
 
-    @GetMapping("/LlistaSubcategoria")
-    public List<SubcategoriaDTO> recerca() {
-        List<SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
+    @GetMapping("/LlistaSubcategorias")
+    public List<SubcategoriaDTO>recerca(){
+        List <SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
         return subcategorias;
     }
 
+    @GetMapping("/LlistaSubcategroia")
+    public Optional<SubcategoriaDTO>recerca_Subcategoria(@RequestParam String desc){
+        Optional<SubcategoriaDTO> subcategoria= subcategoriaServiceImpl.findBydescSubcategoriaDTO(desc);
+        return subcategoria;
+
+    }
+
+
+
+
+
+
+
 }
+    

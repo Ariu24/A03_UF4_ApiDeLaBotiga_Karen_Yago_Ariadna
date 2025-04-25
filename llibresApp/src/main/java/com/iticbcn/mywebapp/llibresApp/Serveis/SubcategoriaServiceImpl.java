@@ -74,6 +74,14 @@ private CategoriaServiceImpl categoriaServiceImpl;
         return subcategoriaRepository.findByDescSubcategoria(desc);
     }
 
+    public Optional<SubcategoriaDTO> findBydescSubcategoriaDTO(String descSubcategoria){
+        Optional<Subcategoria> subcategoria= subcategoriaRepository.findByDescSubcategoria(descSubcategoria);
+        if(subcategoria.isPresent()){
+            return Optional.of((subcategoriaMapper.SubcategoriaToSubcategoriaDTO(subcategoria.get())));
+        }
+        return Optional.empty();
+    }
+
     @Override
     public List<ProductDTO> findAllProducts(){
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
