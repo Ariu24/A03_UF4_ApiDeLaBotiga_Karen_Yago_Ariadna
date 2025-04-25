@@ -51,7 +51,7 @@ public class WebController {
 
     @GetMapping("/LlistarCategoria")
     public Optional<CategoriaDTO> buscarCategoria(@RequestParam String desc) {
-        Optional<CategoriaDTO> categoria = categoriaServiceImpl.findBydescCategoria(desc);
+        Optional<CategoriaDTO> categoria = categoriaServiceImpl.findBydescCategoriaDTO(desc);
         return categoria; 
     }
 

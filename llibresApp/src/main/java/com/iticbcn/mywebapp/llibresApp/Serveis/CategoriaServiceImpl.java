@@ -79,6 +79,14 @@ public class CategoriaServiceImpl implements BotigaService {
         return Optional.empty();
     }
 
+    public Optional<CategoriaDTO> findBydescCategoriaDTO(String descCategoria){
+        Optional<Categoria> c = categoriaRepository.findBydescCategoria(descCategoria);
+        if (c.isPresent()) {
+            return Optional.of((categoriaMapper.CategoriaToCategoriaDTO(c.get())));
+        }
+        return Optional.empty();
+    }
+
     @Override
     public List<ProductDTO> findAllProducts() {
         throw new UnsupportedOperationException("Este método debe implementarse en ProductServiceImpl");
