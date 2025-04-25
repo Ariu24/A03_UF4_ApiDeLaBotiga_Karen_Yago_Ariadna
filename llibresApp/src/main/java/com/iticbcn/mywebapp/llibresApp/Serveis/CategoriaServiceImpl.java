@@ -74,7 +74,15 @@ public class CategoriaServiceImpl implements BotigaService {
     public Optional<Categoria> findBydescCategoria(String descCategoria){
         Optional<Categoria> c = categoriaRepository.findBydescCategoria(descCategoria);
         if (c.isPresent()) {
-            return Optional.of(c.get());
+            return Optional.of((c.get()));
+        }
+        return Optional.empty();
+    }
+
+    public Optional<CategoriaDTO> findBydescCategoriaDTO(String descCategoria){
+        Optional<Categoria> c = categoriaRepository.findBydescCategoria(descCategoria);
+        if (c.isPresent()) {
+            return Optional.of((categoriaMapper.CategoriaToCategoriaDTO(c.get())));
         }
         return Optional.empty();
     }
