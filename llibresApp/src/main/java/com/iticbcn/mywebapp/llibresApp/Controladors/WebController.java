@@ -66,10 +66,10 @@ public class WebController {
     @PostMapping("/inserirSubcategoria")
     public String inserirSubcategoria(@RequestBody SubcategoriaDTO subcategoriaDTO) {
         System.out.println("DESC Subcategoria: " + subcategoriaDTO.getDescSubcategoria());
+
         subcategoriaServiceImpl.savedSubcategoria(subcategoriaDTO);
         return "Subcategoria inserida correctament";
     }
-
 
 
     @GetMapping("/LlistaSubcategoria")
@@ -77,6 +77,11 @@ public class WebController {
         List <SubcategoriaDTO> subcategorias = subcategoriaServiceImpl.findAllSubcategorias();
         return subcategorias;
     }
+
+
+
+
+
 
 }
     
