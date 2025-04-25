@@ -1,55 +1,148 @@
-Comprovacions dels endpoints del swagger
-Comprovacions per Producte:
-- InserirProducte
-Parametres:
-![alt text](image-1.png)
-resultat:
-![alt text](image.png)
-En cas que Categoria o Subcategoria no existeixi o hi hagi algun error es mostra al swagger:
-![alt text](image-2.png)
-- LlistarProductes
-![alt text](image-4.png)
-![alt text](image-3.png)
-- CercaProducte
-![alt text](image-5.png)
-![alt text](image-6.png)
-En cas que no hi hagi cap producte amb aquest nom retorna:
-![alt text](image-7.png)
-![alt text](image-8.png)
-- ModificarPreu
-![alt text](image-16.png)
-![alt text](image-17.png)
-Ara si anem a revisar el producte:
-![alt text](image-18.png)
-veiem el preu actualitzat
-I a la base de dades el updatedAt canviat
-![alt text](image-21.png)
-En cas de voler actualitzar un producte que no existeix:
-![alt text](image-19.png)
-![alt text](image-20.png)
-- Eliminar producte
-![alt text](image-25.png)
-I si el cerquem podem veure que no apareix:
-![alt text](image-26.png)
-En cas que el producte a eliminar no existeixi:
-![alt text](image-24.png)
-Comprovacions per Categoria:
-- InserirCategoria
-![alt text](image-9.png)
-![alt text](image-10.png)
-![alt text](image-11.png)
-- LlistarCategories
-![alt text](image-12.png)
-![alt text](image-13.png)
-- CercaCategoria
-![alt text](image-23.png)
-En cas que no existeixi:
-![alt text](image-22.png)
-Comprovacions per SubCategoria:
-- InserirSubcategoria
-- LlistarSubcategories
-- CercarSubcategoria
+# Comprovació dels endpoints del **Swagger**
 
+Aquest document mostra exemples reals de comprovacions dels diferents endpoints implementats per a **Producte**, **Categoria** i **Subcategoria**, així com els missatges d’error que poden aparèixer.
 
+---
 
-Els nostres tres endPoints extres han sigut: CercarSubcategoria, CercarCategoria i eliminarProducte
+## Comprovacions per **Producte**
+
+### Inserir Producte
+
+**Paràmetres d’entrada:**
+
+![Paràmetres d’entrada](image-1.png)
+
+**Resultat esperat:**
+
+![Resultat correcte](image.png)
+
+**Errors possibles:**
+- Si la **categoria** o **subcategoria** no existeixen:
+
+![Error per categoria o subcategoria inexistent](image-2.png)
+
+---
+
+### Llistar Productes
+
+![Llistat de productes - exemple 1](image-4.png)  
+![Llistat de productes - exemple 2](image-3.png)
+
+---
+
+### Cercar Producte per nom
+
+![Paràmetres de cerca](image-5.png)  
+![Resultat trobat](image-6.png)
+
+**En cas que no existeixi cap producte amb aquest nom:**
+
+![Sense resultats](image-7.png)  
+![Missatge d’error](image-8.png)
+
+---
+
+### Modificar Preu
+
+![Modificar preu](image-16.png)  
+![Resposta de modificació](image-17.png)
+
+**Verificació del canvi:**
+
+- Revisant el producte:
+  ![Preu actualitzat](image-18.png)
+
+- A la base de dades, el `updatedAt` ha estat modificat:
+  ![updatedAt canviat](image-21.png)
+
+**En cas que el producte no existeixi:**
+
+![Error - producte no trobat](image-19.png)  
+![Missatge d’error](image-20.png)
+
+---
+
+### Eliminar Producte
+
+![Eliminar producte](image-25.png)
+
+**Verificació que el producte ha estat eliminat:**
+
+![Producte no apareix](image-26.png)
+
+**En cas que el producte a eliminar no existeixi:**
+
+![Error - producte no existeix](image-24.png)
+
+---
+
+## Comprovacions per **Categoria**
+
+### Inserir Categoria
+![Inserir categoria - pas 2](image-10.png)  
+![Inserir categoria - resultat](image-11.png)
+
+---
+
+### Llistar Categories
+
+![Llistat categories - 1](image-12.png)  
+![Llistat categories - 2](image-13.png)
+
+---
+
+### Cercar Categoria
+
+![Cercar categoria - trobat](image-23.png)
+
+**Si la categoria no existeix:**
+
+![Cercar categoria - no trobat](image-22.png)
+
+---
+
+## Comprovacions per **Subcategoria**
+
+### Inserir Subcategoria
+
+![Inserir subcategoria - entrada](image-27.png)  
+![Inserir subcategoria - resultat](image-28.png)
+
+**Si la categoria associada no existeix:**
+
+![Error - categoria inexistent](image-29.png)
+
+---
+
+### Llistar Subcategories
+
+![Llistat de subcategories](image-30.png)
+
+---
+
+### Cercar Subcategoria
+
+![Cercar subcategoria - trobat](image-31.png)  
+![Cercar subcategoria - detall](image-32.png)
+
+**Si la subcategoria no existeix:**
+
+![Cercar subcategoria - no trobat](image-33.png)
+
+---
+
+## Endpoints extres ¡
+
+Els tres endpoints addicionals desenvolupats han estat:
+
+- `CercarSubcategoria`
+- `CercarCategoria`
+- `EliminarProducte`
+
+---
+
+## Possible millora
+
+A última hora ens hem adonat que, per una millor gestió dels missatges d’error, els mètodes del `RestController` haurien de retornar `ResponseEntity`.
+
+---
