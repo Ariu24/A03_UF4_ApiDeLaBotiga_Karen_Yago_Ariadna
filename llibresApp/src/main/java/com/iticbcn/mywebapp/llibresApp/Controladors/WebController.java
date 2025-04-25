@@ -41,9 +41,15 @@ public class WebController {
     }
 
     @GetMapping("/LlistarCategories") 
-    public List<CategoriaDTO> consulta() {
+    public List<CategoriaDTO> consultaCategoria() {
         List<CategoriaDTO> categorias = categoriaServiceImpl.findAllCategorias();
         return categorias;
+    }
+
+    @GetMapping("/LlistarCategoria")
+    public Optional<CategoriaDTO> buscarCategoria(@RequestParam String desc) {
+        Optional<CategoriaDTO> categoria = categoriaServiceImpl.findBydescCategoria(desc);
+        return categoria; 
     }
 
     @PostMapping("/inserirProducte")
