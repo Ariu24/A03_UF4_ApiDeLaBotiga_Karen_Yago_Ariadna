@@ -91,7 +91,7 @@ public class ProductServiceImpl implements BotigaService {
     }
 
     public void modificarPreu(String nom, float nouPreu) {
-        Optional<ProductDTO> productOpt = findProductById(id);
+        Optional<ProductDTO> productOpt = findProductByName(nom);
         if (productOpt.isPresent()) {
             productRepository.modificarPreu(nom, nouPreu);
         } else {
