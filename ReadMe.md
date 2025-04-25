@@ -17,6 +17,14 @@ En cas que no hi hagi cap producte amb aquest nom retorna:
 ![alt text](image-7.png)
 ![alt text](image-8.png)
 - ModificarPreu
+![alt text](image-16.png)
+![alt text](image-17.png)
+Ara si anem a revisar el producte:
+![alt text](image-18.png)
+veiem el preu actualitzat
+En cas de voler actualitzar un producte que no existeix:
+![alt text](image-19.png)
+![alt text](image-20.png)
 Comprovacions per Categoria:
 - InserirCategoria
 ![alt text](image-9.png)

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import com.iticbcn.mywebapp.llibresApp.DTO.CategoriaDTO;
@@ -93,7 +94,8 @@ public class ProductServiceImpl implements BotigaService {
     public void modificarPreu(String nom, float nouPreu) {
         Optional<ProductDTO> productOpt = findProductByName(nom);
         if (productOpt.isPresent()) {
-            productRepository.modificarPreu(nom, nouPreu);
+            LocalDateTime data = LocalDateTime.now();
+            productRepository.modificarPreu(nom, nouPreu, data);
         } else {
             throw new IllegalArgumentException("El producte amb nom " + nom + " no existeix.");
         }
